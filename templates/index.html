@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake News Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <h1>Fake News Detector</h1>
+    <p class="subtitle">NLP-powered news credibility classification</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <label for="news-text" class="label">News text</label>
+      <textarea id="news-text" rows="9" maxlength="10000"
+        placeholder="Paste a news article or headline here..."></textarea>
+
+      <div class="actions">
+        <button id="analyze-btn" type="button">
+          <span id="btn-spinner" class="spinner" hidden></span>
+          <span id="btn-label">Analyze News</span>
+        </button>
+        <button id="clear-btn" type="button" class="secondary">Clear</button>
+      </div>
+
+      <p id="error-message" class="error" role="alert" hidden></p>
+    </section>
+
+    <section id="result" class="card result" aria-live="polite" hidden>
+      <div class="result-top">
+        <div>
+          <p class="result-heading">Prediction</p>
+          <span id="result-badge" class="badge">-</span>
+        </div>
+        <div class="confidence">
+          <p class="result-heading">Confidence</p>
+          <p id="confidence-value" class="confidence-value">0%</p>
+        </div>
+      </div>
+      <div class="meter" aria-hidden="true"><div id="meter-fill" class="meter-fill"></div></div>
+      <p id="explanation" class="explanation"></p>
+    </section>
+
+    <p class="disclaimer">
+      This project is an educational NLP demonstration. The prediction is based on patterns
+      learned from the training dataset and should not be treated as a definitive fact-checking system.
+    </p>
+  </main>
+
+  <footer class="footer">Built with Flask, scikit-learn, TF-IDF and Logistic Regression</footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
